@@ -8,7 +8,7 @@ public class AdsHelper {
 
 	public static BaseAdvertise getCurrentInterface(Context context)
 	{
-		BaseAdvertise mAds = new HelpBaseAdvertise(context);
+		BaseAdvertise mAds = new AdChinaHelper(context);
 		return mAds;
 	}
 	
@@ -64,6 +64,12 @@ public class AdsHelper {
 
 		@Override
 		public void showBanner() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void LoadingFullScreenAsync() {
 			// TODO Auto-generated method stub
 			
 		}

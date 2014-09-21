@@ -92,4 +92,5 @@
     <string name="homepage_dialog_cancel">Cancel</string>
     <string name="homepage_dialog_applist">Applist</string>
     <string name="alert_no_loan">Please edit the loan</string>
+    <string name="first_loading_string">Loading, Please wait.</string>
 </resources>

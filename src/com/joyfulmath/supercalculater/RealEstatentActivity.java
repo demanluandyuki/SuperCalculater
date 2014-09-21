@@ -74,6 +74,7 @@ public class RealEstatentActivity extends Activity implements
 		// TODO Auto-generated method stub
 		super.onStart();
 		mAds.setBanner(mAdsBanner);
+		mAds.showBanner();
 	}
 
 
