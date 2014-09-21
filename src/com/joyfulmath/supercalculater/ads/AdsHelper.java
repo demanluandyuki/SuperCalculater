@@ -6,12 +6,19 @@ import android.view.ViewGroup;
 
 public class AdsHelper {
 
+	public static BaseAdvertise mInstance = null;
 	public static BaseAdvertise getCurrentInterface(Context context)
 	{
-		BaseAdvertise mAds = new AdChinaHelper(context);
-		return mAds;
+		if(mInstance == null)
+		{
+			mInstance = new AdChinaHelper(context);
+		}
+		else
+		{
+			mInstance.ChangeActivity(context);
+		}
+		return mInstance;
 	}
-	
 	public static class HelpBaseAdvertise extends BaseAdvertise
 	{
 
@@ -70,6 +77,12 @@ public class AdsHelper {
 
 		@Override
 		public void LoadingFullScreenAsync() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void StopFullAds() {
 			// TODO Auto-generated method stub
 			
 		}

@@ -37,9 +37,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/realestatentTheme" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.calculater.realestatent.activity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -52,7 +52,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.calculater.realestatent.result" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -70,7 +70,19 @@
             </intent-filter>
         </receiver>
         <!-- AdChina AdsSdk End. -->
+        <activity
+            android:name="StartActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/realestatent_loan"
+            android:screenOrientation="portrait"
+            android:theme="@style/realestatentTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

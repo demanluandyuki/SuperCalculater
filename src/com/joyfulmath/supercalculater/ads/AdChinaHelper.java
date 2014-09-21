@@ -1,14 +1,17 @@
 package com.joyfulmath.supercalculater.ads;
 
 import com.adchina.android.ads.AdManager;
+import com.adchina.android.ads.api.AdFsListener;
+import com.adchina.android.ads.api.AdFullScreen;
 import com.adchina.android.ads.api.AdView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class AdChinaHelper extends BaseAdvertise {
+public class AdChinaHelper extends BaseAdvertise implements AdFsListener {
 
 	private final static String TAG = "SuperCalculater.AdChinaHelper";
 	private final String ADBANNER_ID = "2205937";
@@ -18,6 +21,8 @@ public class AdChinaHelper extends BaseAdvertise {
 
 	private Activity mActivity = null;
 	AdView adView = null;
+	private AdFullScreen adFs = null;
+
 	public AdChinaHelper(Context context) {
 		super(context);
 		mActivity = (Activity) context;
@@ -28,7 +33,7 @@ public class AdChinaHelper extends BaseAdvertise {
 	public void init() {
 		// TODO Auto-generated method stub
 		AdManager.setEnableLbs(true); // 是否开启lbs精确广告定位
-		AdManager.setRelateScreenRotate(mContext,true); // 是否关心屏幕旋转 
+		AdManager.setRelateScreenRotate(mContext, true); // 是否关心屏幕旋转
 		AdManager.setAnimation(true); // banner展示是否需要动画
 		AdManager.setLogMode(false); // 显示调试日志，发布时请关闭
 	}
@@ -36,7 +41,6 @@ public class AdChinaHelper extends BaseAdvertise {
 	@Override
 	public void exit() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -82,7 +86,69 @@ public class AdChinaHelper extends BaseAdvertise {
 	@Override
 	public void LoadingFullScreenAsync() {
 		// TODO Auto-generated method stub
-		
+		Log.i(TAG, "LoadingFullScreenAsync");
+		adFs = new AdFullScreen(mActivity, ADFULL_ID);
+		adFs.setAdFsListener(this);
+		adFs.start(); // 启动后请在下面回调接口里展示全屏
+	}
+
+	@Override
+	public void onClickFullScreenAd() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onDisplayFullScreenAd() {
+		// TODO Auto-generated method stub
+		Log.i(TAG, "onDisplayFullScreenAd");
+	}
+
+	@Override
+	public void onEndFullScreenLandpage() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onFailedToReceiveFullScreenAd() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onFinishFullScreenAd() {
+		// TODO Auto-generated method stub
+		Log.i(TAG, "onFinishFullScreenAd");
+		endFullAdsAuto(0);
+	}
+
+	@Override
+	public void onReceiveFullScreenAd() {
+		// TODO Auto-generated method stub
+		Log.i(TAG, "onReceiveFullScreenAd");
+		if (adFs != null)
+		{
+			Log.i(TAG, "showFs");
+			adFs.showFs();
+		}
+	}
+
+	@Override
+	public void onStartFullScreenLandPage() {
+		// TODO Auto-generated method stub
+		Log.i(TAG, "onStartFullScreenLandPage");
+	}
+
+	@Override
+	public void StopFullAds() {
+		// TODO Auto-generated method stub
+		Log.i(TAG, "StopFullAds");
+		if (adFs != null) {
+			adFs.stop();
+			adFs = null;
+		}
+
 	}
 
 }
