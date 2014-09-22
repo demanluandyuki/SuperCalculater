@@ -62,6 +62,7 @@ public abstract class BaseAdvertise {
 	
 	public void endFullAdsAuto(int millsec)
 	{
+		mhandle.removeMessages(MSG_SHOW_FULL_COMPLETED);
 		Message msg = mhandle.obtainMessage();
 		msg.what = MSG_SHOW_FULL_COMPLETED;
 		if(millsec !=0)

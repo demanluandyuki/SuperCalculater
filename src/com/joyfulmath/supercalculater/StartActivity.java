@@ -15,6 +15,7 @@ public class StartActivity extends Activity implements BaseAdsListener{
 
 	private static final String TAG = "SuperCalculater.StartActivity";
 	public BaseAdvertise mAds =null;
+	private boolean bNotify = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -28,6 +29,7 @@ public class StartActivity extends Activity implements BaseAdsListener{
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
+		Log.i(TAG, "onDestroy");
 		mAds.StopFullAds();
 		super.onDestroy();
 	}
@@ -36,9 +38,14 @@ public class StartActivity extends Activity implements BaseAdsListener{
 	public void OnShowingFullAdsCompleted() {
 		// TODO Auto-generated method stub
 		Log.i(TAG, "OnShowingFullAdsCompleted");
-		Intent intent = new Intent(this,RealEstatentActivity.class);
-		startActivity(intent);
-		finish();
+		if(!bNotify)
+		{
+			Intent intent = new Intent(this,RealEstatentActivity.class);
+			startActivity(intent);
+			bNotify = true;
+			this.finish();
+		}
+
 	}
 	
 }

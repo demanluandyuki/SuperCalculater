@@ -90,6 +90,7 @@ public class AdChinaHelper extends BaseAdvertise implements AdFsListener {
 		adFs = new AdFullScreen(mActivity, ADFULL_ID);
 		adFs.setAdFsListener(this);
 		adFs.start(); // 启动后请在下面回调接口里展示全屏
+		endFullAdsAuto(8000);
 	}
 
 	@Override
